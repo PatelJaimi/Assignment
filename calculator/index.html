@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            font-size: 18px;
+            font-family: Cambria;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 35px;
+        }
+
+        .container {
+            width: 35%;
+            border: 1px solid #ccc;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        table tr td {
+            padding: 8px;
+        }
+
+        input {
+            width: 90%;
+            padding: 5px;
+        }
+
+        .btn {
+            width: 50%;
+            padding: 5px;
+            cursor: pointer;
+        }
+    </style>
+    <title>Calculater</title>
+</head>
+
+<body>
+    <h1>Calculater</h1>
+    <div class="container">
+        <table>
+            <tr>
+                <td colspan="2" style="padding: 10px 40px;">
+                    <p>You Can Enter (Operation): </p>
+                    <ul>
+                        <li> ' + ' for addition</li>
+                        <li> ' - ' for substraction</li>
+                        <li> ' * ' for multiplication</li>
+                        <li> ' / ' for division</li>
+                        <li> ' % ' for modulo</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="">Enter Your Choise</label>
+                </td>
+                <td>
+                    <input type="text" id="choise" placeholder="Operation"><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="">Enter First Value </label>
+                </td>
+                <td>
+                    <input type="text" id="first"><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="">Enter Second Value </label>
+
+                </td>
+                <td>
+                    <input type="text" id="second"><br>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Answer" onclick="cal()" class="btn">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p id="output">Output : </p>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function cal() {
+            var choise = document.getElementById("choise").value;
+            var firstNumber = document.getElementById("first").value;
+            var secondNumber = document.getElementById("second").value;
+            var output = document.getElementById("output");
+            var ans = 0;
+
+            var first = parseInt(firstNumber);
+            var second = parseInt(secondNumber)
+
+            console.log(choise);
+            switch (choise) {
+                case "+":
+                    ans = first + second;
+                    break;
+                case "-":
+                    ans = first - second;
+                    break;
+                case "*":
+                    ans = first * second;
+                    break;
+                case "/":
+                    ans = first / second;
+                    break;
+                case "%":
+                    ans = first % second;
+                    break;
+                default:
+                    ans = "Enter worng choice.";
+            }
+            output.innerHTML = "Output : " + ans;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="mainComponent">
+            <div class="product">
+
+                <div class="proimg">
+                    <!-- <img v-bind:src="tshcolor[0].imgURL" alt=""> -->
+                    <img v-bind:src="image" alt="">
+                </div>
+
+                <div class="proinfo">
+                    <h1>{{title}}</h1>
+
+                    <!-- <h3 v-if="inStock > 10">In stock</h3>
+                    <h3 v-else-if="inStock <= 10 && inStock > 0"> Almost sold out!</h3>
+                    <h3 v-else>Out of stock</h3> -->
+                    <h3 v-if="instock > 10">In stock</h3>
+                    <h3 v-else-if="instock <= 10 && instock > 0"> Almost sold out!</h3>
+                    <h3 v-else>Out of stock</h3>
+
+                    <ul>
+                        <li v-for="i in detail">{{i}}</li>
+                    </ul>
+
+                    <h3>Color : </h3>
+                    <!-- <p v-for="j in tshcolor">{{j.id}} : {{j.tcolor}}</p> -->
+                    <!-- <p v-for="j in tshcolor" :key="j.id">{{j.id}} : {{j.tcolor}}</p> -->
+                    <!-- <p class="tshartcolor" v-for="j in tshcolor" @mouseover="imageUpdate(j.imgURL)"
+                        @click="imageUpdate(j.imgURL)" :style="{background:j.tcolor}">
+                        {{j.tcolor}}
+                    </p><br> -->
+                    <p class="tshartcolor" v-for="(j,i) in tshcolor" @mouseover="imageUpdate(i)" @click="imageUpdate(i)"
+                        :style="{background:j.tcolor}">
+                        {{j.tcolor}}
+                    </p><br>
+
+
+                    <!-- <button v-bind:class="cartClass" v-on:click="cart+=1">Add To Cart</button> -->
+                    <button v-on:click="addtocart" :disabled="!instock" :class=[instock?cartClass:cartClassDisabled]>Add
+                        To Cart</button>
+
+                    <div v-bind:style="{padding:'5px 10px',border:'solid',margin:'10px',color:cartColor}">
+                        <p>Cart : {{cart}}</p>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>
